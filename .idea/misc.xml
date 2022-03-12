@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/network_error.xml" value="0.111" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14221014492753623" />
+        <entry key="app/src/main/res/layout/fragment_car_details.xml" value="0.14221014492753623" />
         <entry key="app/src/main/res/layout/fragment_car_list.xml" value="0.14221014492753623" />
         <entry key="app/src/main/res/layout/list_item.xml" value="0.165" />
         <entry key="app/src/main/res/layout/main_content.xml" value="0.14221014492753623" />

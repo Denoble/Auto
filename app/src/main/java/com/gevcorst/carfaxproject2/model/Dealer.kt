@@ -1,10 +1,13 @@
 package com.gevcorst.carfaxproject2.model
 
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.parcelize.Parcelize
 
 @JsonClass(generateAdapter = true)
+@Parcelize
 data class Dealer(
     val address: String = "",
     val backfill: Boolean = false,
@@ -27,4 +30,4 @@ data class Dealer(
     val phone: String = "",
     val state: String = "",
     val zip: String = ""
-)
+):Parcelable

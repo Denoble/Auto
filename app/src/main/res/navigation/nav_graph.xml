@@ -12,11 +12,19 @@
       tools:layout="@layout/fragment_car_list" >
     <action
         android:id="@+id/action_carListFragment_to_carDetailsFragment"
-        app:destination="@id/carDetailsFragment" />
+        app:destination="@id/carDetailsFragment" >
+      <argument
+        android:name="selectedListing"
+        app:argType="com.gevcorst.carfaxproject2.model.Listings"/>
+    </action>
   </fragment>
   <fragment
       android:id="@+id/carDetailsFragment"
       android:name="com.gevcorst.carfaxproject2.ui.CarDetailsFragment"
       android:label="fragment_car_details"
-      tools:layout="@layout/fragment_car_details" />
+      tools:layout="@layout/fragment_car_details" >
+    <argument
+        android:name="selectedListing"
+        app:argType="com.gevcorst.carfaxproject2.model.Listings"/>
+  </fragment>
 </navigation>

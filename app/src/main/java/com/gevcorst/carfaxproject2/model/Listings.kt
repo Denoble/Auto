@@ -2,13 +2,16 @@ package com.gevcorst.carfaxproject2.model
 
 
 import android.media.Image
+import android.os.Parcelable
 import androidx.room.*
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.squareup.moshi.JsonClass
+import kotlinx.parcelize.Parcelize
 
 @Entity(tableName = "carlistings")
 @JsonClass(generateAdapter = true)
+@Parcelize
 data class Listings(
     val accidentHistory: AccidentHistory = AccidentHistory(),
 
@@ -76,7 +79,7 @@ data class Listings(
     val vehicleUseHistory: VehicleUseHistory = VehicleUseHistory(),
     val year: Int = 0,
     val listingStatus: String = ""
-) {
+): Parcelable {
 
 
 }

@@ -9,10 +9,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.gevcorst.carfaxproject2.databinding.FragmentCarListBinding
+import com.gevcorst.carfaxproject2.model.Listings
 import com.gevcorst.carfaxproject2.viewmodels.CarListViewModel
+import com.gevcorst.carfaxproject2.viewmodels.ServiceStatus
 import dagger.hilt.android.AndroidEntryPoint
-
-
 
 
 @AndroidEntryPoint
@@ -37,13 +37,19 @@ class CarListFragment : Fragment() {
     }
 
     private fun observerListingList() {
-        viewModel.carListings.observe(viewLifecycleOwner, Observer {
-            binding.recyclerView.adapter =
-                ListAdapter(it, ListAdapter.OnClickListener {
-                    findNavController().navigate(
-                        CarListFragmentDirections.actionCarListFragmentToCarDetailsFragment()
-                    )
-                })
+        viewModel.carListings.observe(viewLifecycleOwner, Observer { listingList ->
+            if(listingList.size > 0){
+                binding.imageViewFragmentCarListLoading.visibility = View.GONE
+                binding.tvFragmentCarListLoading.visibility = View.GONE
+                binding.recyclerView.visibility = View.VISIBLE
+                binding.recyclerView.adapter =
+                    ListAdapter(listingList, ListAdapter.OnClickListener {listings ->
+                        findNavController().navigate(
+                            CarListFragmentDirections
+                                .actionCarListFragmentToCarDetailsFragment(listings)
+                        )
+                    })
+            }
         })
     }
 }

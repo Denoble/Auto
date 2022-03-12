@@ -26,7 +26,6 @@ class CarDetailsFragment : Fragment() {
     var _binding: FragmentCarDetailsBinding? = null
     val binding get() = _binding!!
     val viewModel: CarListViewModel by activityViewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -39,5 +38,13 @@ class CarDetailsFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentCarDetailsBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val listings = CarDetailsFragmentArgs.fromBundle(requireArguments()).selectedListing
+       val title =   listings.year.toString()+" "+listings.make+" "+listings.model
+
+        (requireActivity() as MainActivity).supportActionBar?.title = title
     }
 }
