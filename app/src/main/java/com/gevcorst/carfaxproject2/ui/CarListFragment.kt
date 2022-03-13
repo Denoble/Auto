@@ -40,7 +40,6 @@ class CarListFragment : Fragment() {
         viewModel.carListings.observe(viewLifecycleOwner, Observer { listingList ->
             if(listingList.size > 0){
                 binding.imageViewFragmentCarListLoading.visibility = View.GONE
-                binding.tvFragmentCarListLoading.visibility = View.GONE
                 binding.recyclerView.visibility = View.VISIBLE
                 binding.recyclerView.adapter =
                     ListAdapter(listingList, ListAdapter.OnClickListener {listings ->
