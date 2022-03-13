@@ -1,16 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.CarDetailsFragment"
     >
 
   <!-- TODO: Update blank fragment layout -->
-  <TextView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:text="@string/hello_blank_fragment"
-      />
 
-</FrameLayout>
+
+  <ImageView
+      android:id="@+id/imageView_details_layout"
+      android:layout_width="0dp"
+      android:layout_height="240dp"
+      android:layout_marginEnd="16dp"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="16dp"
+      android:src="@drawable/loading_animation"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/loading_animation"
+      />
+  <ImageView
+      android:id="@+id/details_layout_vertical_divider"
+      android:layout_width="wrap_content"
+      android:layout_height="0dp"
+      android:layout_marginStart="16dp"
+      app:layout_constraintBottom_toBottomOf="@+id/details_layout_tv_price"
+      app:layout_constraintStart_toEndOf="@+id/details_layout_tv_price"
+      app:layout_constraintTop_toTopOf="@+id/details_layout_tv_price"
+      app:srcCompat="@android:drawable/status_bar_item_background"
+      />
+  <TextView
+      android:id="@+id/detail_layout_tv_year"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="16dp"
+      android:text="TextView"
+      app:layout_constraintStart_toStartOf="@+id/imageView_details_layout"
+      app:layout_constraintTop_toBottomOf="@+id/imageView_details_layout"
+      />
+  <TextView
+      android:id="@+id/details_layout_tv_make"
+      android:layout_width="wrap_content"
+      android:layout_height="0dp"
+      android:layout_marginStart="16dp"
+      android:text="TextView"
+      app:layout_constraintBottom_toBottomOf="@+id/detail_layout_tv_year"
+      app:layout_constraintStart_toEndOf="@+id/detail_layout_tv_year"
+      app:layout_constraintTop_toTopOf="@+id/detail_layout_tv_year"
+      />
+  <TextView
+      android:id="@+id/details_layout_tv_model"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:text="TextView"
+      app:layout_constraintBottom_toBottomOf="@+id/details_layout_tv_make"
+      app:layout_constraintStart_toEndOf="@+id/details_layout_tv_make"
+      app:layout_constraintTop_toTopOf="@+id/details_layout_tv_make"
+      />
+  <TextView
+      android:id="@+id/details_layout_tv_trim"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:text="TextView"
+      app:layout_constraintBottom_toBottomOf="@+id/details_layout_tv_model"
+      app:layout_constraintStart_toEndOf="@+id/details_layout_tv_model"
+      app:layout_constraintTop_toTopOf="@+id/details_layout_tv_model"
+      />
+  <TextView
+      android:id="@+id/details_layout_tv_price"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:text="TextView"
+      app:layout_constraintStart_toStartOf="@+id/detail_layout_tv_year"
+      app:layout_constraintTop_toBottomOf="@+id/detail_layout_tv_year"
+      />
+  <TextView
+      android:id="@+id/details_layout_tv_millage"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:text="TextView"
+      app:layout_constraintBottom_toBottomOf="@+id/details_layout_vertical_divider"
+      app:layout_constraintStart_toEndOf="@+id/details_layout_vertical_divider"
+      app:layout_constraintTop_toTopOf="@+id/details_layout_vertical_divider"
+      />
+  <ScrollView
+      android:id="@+id/scrollView2"
+      android:layout_width="0dp"
+      android:layout_height="166dp"
+      android:layout_marginEnd="16dp"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="16dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/details_layout_tv_millage"
+      >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <include
+        android:id="@+id/details_layout_extension"
+        layout="@layout/details_scroll_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    </LinearLayout>
+  </ScrollView>
+  <Button
+      android:id="@+id/details_layout_caller_button"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:text="@string/Call_dealer"
+      app:layout_constraintEnd_toEndOf="@+id/scrollView2"
+      app:layout_constraintStart_toStartOf="@+id/scrollView2"
+      app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+      />
+</androidx.constraintlayout.widget.ConstraintLayout>
