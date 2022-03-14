@@ -16,47 +16,38 @@
       android:id="@+id/details_layout_caller_button"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
-      android:layout_marginTop="16dp"
-      android:layout_marginBottom="16dp"
       android:text="@string/Call_dealer"
-      app:layout_constraintEnd_toEndOf="@+id/scrollView2"
-      app:layout_constraintStart_toStartOf="@+id/scrollView2"
-      app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+      app:layout_constraintEnd_toEndOf="@+id/details_layout_tv_trim"
+      app:layout_constraintStart_toStartOf="@+id/details_layout_tv_price"
+      app:layout_constraintTop_toBottomOf="@+id/details_layout_tv_millage"
       />
   <ImageView
       android:id="@+id/imageView_details_layout"
       android:layout_width="0dp"
-      android:layout_height="240dp"
+      android:layout_height="180dp"
       android:layout_marginEnd="16dp"
       android:layout_marginStart="16dp"
       android:layout_marginTop="16dp"
       android:src="@drawable/loading_animation"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintEnd_toStartOf="@+id/guideline3"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:srcCompat="@drawable/loading_animation"
       />
-  <ImageView
-      android:id="@+id/details_layout_vertical_divider"
-      android:layout_width="0dp"
-      android:layout_height="0dp"
-      android:layout_marginStart="16dp"
-      app:layout_constraintBottom_toBottomOf="@+id/details_layout_tv_price"
-      app:layout_constraintStart_toEndOf="@+id/details_layout_tv_price"
-      app:layout_constraintTop_toTopOf="@+id/details_layout_tv_price"
-      app:srcCompat="@android:drawable/status_bar_item_background"
-      />
+
   <ScrollView
       android:id="@+id/scrollView2"
-      android:layout_width="0dp"
-      android:layout_height="166dp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="16dp"
       android:layout_marginEnd="16dp"
       android:layout_marginStart="16dp"
       android:layout_marginTop="16dp"
+      android:contentDescription="@string/app_name"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/details_layout_tv_millage"
+      app:layout_constraintStart_toStartOf="@+id/guideline3"
+      app:layout_constraintTop_toTopOf="parent"
       >
     <LinearLayout
         android:layout_width="match_parent"
@@ -67,15 +58,14 @@
           layout="@layout/details_scroll_layout"
           android:id="@+id/details_layout_extension"
           android:layout_width="match_parent"
-          android:layout_height="wrap_content"
+          android:layout_height="match_parent"
           />
     </LinearLayout>
   </ScrollView>
   <TextView
       android:id="@+id/detail_layout_tv_year"
-      android:layout_width="0dp"
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="16dp"
       android:layout_marginTop="16dp"
       android:text="TextView"
       android:textStyle="bold"
@@ -84,8 +74,8 @@
       />
   <TextView
       android:id="@+id/details_layout_tv_make"
-      android:layout_width="wrap_content"
-      android:layout_height="0dp"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
       android:layout_marginStart="16dp"
       android:text="TextView"
       android:textStyle="bold"
@@ -103,6 +93,7 @@
       app:layout_constraintBottom_toBottomOf="@+id/details_layout_tv_make"
       app:layout_constraintStart_toEndOf="@+id/details_layout_tv_make"
       app:layout_constraintTop_toTopOf="@+id/details_layout_tv_make"
+      app:layout_constraintVertical_bias="0.0"
       />
   <TextView
       android:id="@+id/details_layout_tv_trim"
@@ -112,8 +103,10 @@
       android:text="TextView"
       android:textStyle="bold"
       app:layout_constraintBottom_toBottomOf="@+id/details_layout_tv_model"
+      app:layout_constraintEnd_toEndOf="@+id/imageView_details_layout"
       app:layout_constraintStart_toEndOf="@+id/details_layout_tv_model"
       app:layout_constraintTop_toTopOf="@+id/details_layout_tv_model"
+      app:layout_constraintVertical_bias="0.0"
       />
   <TextView
       android:id="@+id/details_layout_tv_price"
@@ -132,8 +125,16 @@
       android:layout_marginStart="16dp"
       android:text="TextView"
       android:textStyle="bold"
-      app:layout_constraintBottom_toBottomOf="@+id/details_layout_vertical_divider"
-      app:layout_constraintStart_toEndOf="@+id/details_layout_vertical_divider"
-      app:layout_constraintTop_toTopOf="@+id/details_layout_vertical_divider"
+      app:layout_constraintBottom_toBottomOf="@+id/details_layout_tv_price"
+      app:layout_constraintStart_toEndOf="@+id/details_layout_tv_price"
+      app:layout_constraintTop_toTopOf="@+id/details_layout_tv_price"
       />
+  <androidx.constraintlayout.widget.Guideline
+      android:id="@+id/guideline3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.5"
+      />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

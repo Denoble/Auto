@@ -13,7 +13,4 @@
     <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
     <!-- Customize your theme here. -->
   </style>
-  <style name="textViewFondweight" parent="Theme.AppCompat">
-    <item name="fontWeight">9000</item>
-  </style>
 </resources>

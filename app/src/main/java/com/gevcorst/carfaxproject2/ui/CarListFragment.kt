@@ -42,7 +42,7 @@ class CarListFragment : Fragment() {
                 binding.imageViewFragmentCarListLoading.visibility = View.GONE
                 binding.recyclerView.visibility = View.VISIBLE
                 binding.recyclerView.adapter =
-                    ListAdapter(listingList, ListAdapter.OnClickListener {listings ->
+                    ListAdapter(listingList, this.requireActivity(),ListAdapter.OnClickListener {listings ->
                         findNavController().navigate(
                             CarListFragmentDirections
                                 .actionCarListFragmentToCarDetailsFragment(listings)

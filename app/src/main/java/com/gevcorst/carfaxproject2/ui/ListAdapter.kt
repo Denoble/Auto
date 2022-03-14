@@ -1,5 +1,6 @@
 package com.gevcorst.carfaxproject2.ui
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,14 +13,13 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.gevcorst.carfaxproject2.R
 import com.gevcorst.carfaxproject2.model.Listings
+import dagger.hilt.android.qualifiers.ApplicationContext
 
 class ListAdapter(
-    private val list:List<Listings>,
+    private val list:List<Listings>, val context: Context,
     val onClickListener: ListAdapter.OnClickListener
 ) :
     RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val inflatedView = LayoutInflater.from(parent.context)
@@ -33,7 +33,7 @@ class ListAdapter(
             holder.itemView.setOnClickListener {
             onClickListener.onClick(listing)
         }
-        holder.bind(listing)
+        holder.bind(listing,context)
     }
 
     override fun getItemCount(): Int {
@@ -51,14 +51,16 @@ class ListAdapter(
         val price:TextView = view.findViewById(R.id.tv_price)
         val milleage:TextView = view.findViewById(R.id.tv_milleage)
         val location:TextView = view.findViewById(R.id.tv_location)
-        fun bind(listing:Listings) {
+        fun bind(listing:Listings,context: Context) {
             bindImage(imageView, listing.images.firstPhoto.medium)
             year.text = listing.year.toString()
             make.text = listing.make
             model.text = listing.model
             trim.text = listing.trim
-            price.text = " $"+listing.currentPrice.toString()
-            milleage.text = listing.mileage.toString() + " mi"
+            val temPrice = context.getString( R.string.dollar_sign)+listing.currentPrice.toString()
+            price.text = temPrice
+            val tempMileage = listing.mileage.toString() + context.getString(R.string.mileage_symbol)
+            milleage.text = tempMileage
             val locationText =   listing.dealer.city + " " + listing.dealer.state
             location.text = locationText
         }

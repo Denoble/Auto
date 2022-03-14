@@ -61,7 +61,8 @@ class CarDetailsFragment : Fragment() {
         binding.detailsLayoutTvTrim.text = listings.trim
         binding.detailsLayoutTvPrice.text =(requireContext().getString(R.string.dollar_sign)+
                 listings.currentPrice.toString())
-        binding.detailsLayoutTvMillage.text = listings.mileage.toString()
+        binding.detailsLayoutTvMillage.text =
+            listings.mileage.toString()+requireContext().getString(R.string.mileage_symbol)
         val location = listings.dealer.city+" "+ listings.dealer.state
         binding.detailsLayoutExtension.detailsLayoutTvLocation.text =location
         binding.detailsLayoutExtension.detailsLayoutTvExteriorColor.text =
@@ -69,7 +70,7 @@ class CarDetailsFragment : Fragment() {
         binding.detailsLayoutExtension.detailsLayoutInterioColor.text =
             listings.interiorColor
         binding.detailsLayoutExtension.detailsLayoutDriveType.text =
-            listings.dealerType
+            listings.drivetype
         binding.detailsLayoutExtension.detailsLayoutTvTransmission.text =
             listings.transmission
         binding.detailsLayoutExtension.detailsLayoutTvBody.text = listings.bodytype
