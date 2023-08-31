@@ -16,7 +16,7 @@ import com.gevcorst.carfaxproject2.model.Listings
 import dagger.hilt.android.qualifiers.ApplicationContext
 
 class ListAdapter(
-    private val list:List<Listings>, val context: Context,
+    private val list: List<Listings>, val context: Context,
     val onClickListener: ListAdapter.OnClickListener
 ) :
     RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
@@ -30,10 +30,10 @@ class ListAdapter(
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val listing = list[position]
-            holder.itemView.setOnClickListener {
+        holder.itemView.setOnClickListener {
             onClickListener.onClick(listing)
         }
-        holder.bind(listing,context)
+        holder.bind(listing, context)
     }
 
     override fun getItemCount(): Int {
@@ -46,31 +46,34 @@ class ListAdapter(
         val imageView: ImageView = view.findViewById(R.id.imageView_list_item)
         val year: TextView = view.findViewById(R.id.tv_year)
         val make: TextView = view.findViewById(R.id.tv_make)
-        val model:TextView = view.findViewById(R.id.tv_model)
-        val trim:TextView = view.findViewById(R.id.tv_trim)
-        val price:TextView = view.findViewById(R.id.tv_price)
-        val milleage:TextView = view.findViewById(R.id.tv_milleage)
-        val location:TextView = view.findViewById(R.id.tv_location)
-        fun bind(listing:Listings,context: Context) {
+        val model: TextView = view.findViewById(R.id.tv_model)
+        val trim: TextView = view.findViewById(R.id.tv_trim)
+        val price: TextView = view.findViewById(R.id.tv_price)
+        val milleage: TextView = view.findViewById(R.id.tv_milleage)
+        val location: TextView = view.findViewById(R.id.tv_location)
+        fun bind(listing: Listings, context: Context) {
             bindImage(imageView, listing.images.firstPhoto.medium)
             year.text = listing.year.toString()
             make.text = listing.make
             model.text = listing.model
             trim.text = listing.trim
-            val temPrice = context.getString( R.string.dollar_sign)+listing.currentPrice.toString()
+            val temPrice = context.getString(R.string.dollar_sign) + listing.currentPrice.toString()
             price.text = temPrice
-            val tempMileage = listing.mileage.toString() + context.getString(R.string.mileage_symbol)
+            val tempMileage =
+                listing.mileage.toString() + context.getString(R.string.mileage_symbol)
             milleage.text = tempMileage
-            val locationText =   listing.dealer.city + " " + listing.dealer.state
+            val locationText = listing.dealer.city + " " + listing.dealer.state
             location.text = locationText
         }
 
     }
-    class OnClickListener(val clickListener: (listing:Listings) -> Unit) {
+
+    class OnClickListener(val clickListener: (listing: Listings) -> Unit) {
         fun onClick(curentListing: Listings) = clickListener(curentListing)
     }
 
 }
+
 fun bindImage(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
         val glideImgUrl = it.toUri().buildUpon().scheme("https").build()

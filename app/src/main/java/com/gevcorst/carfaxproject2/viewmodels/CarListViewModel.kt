@@ -20,6 +20,7 @@ import javax.inject.Inject
 enum class ServiceStatus { SENDING, LOADING, ERROR, DONE, IDLE }
 
 
+@OptIn(ExperimentalCoroutinesApi::class)
 @HiltViewModel
 class CarListViewModel @Inject constructor(
     private val carListRepository: CarListRepository
@@ -40,12 +41,15 @@ class CarListViewModel @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
+
+    @OptIn(FlowPreview::class)
     fun updateList(context: Context) {
         val isDatabaseAvailable = doesDatabaseExist(context)
         viewModelScope.launch {
             if (isDatabaseAvailable) {
                 getListInDatabase().collect {
                     _carListings.value = it
+                    Log.d(javaClass.simpleName +" FROMDATABASE",it.toString())
                 }
             } else {
                 val listingJob: Deferred<Flow<List<Listings>>> = async(Dispatchers.Default) {
@@ -55,6 +59,7 @@ class CarListViewModel @Inject constructor(
                 val listingsValue = listingJob.await()
                 listingsValue.collect {
                     _carListings.value = it
+                    Log.d(javaClass.simpleName +" FROMSERVER",it.toString())
                 }
             }
         }
